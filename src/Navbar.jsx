@@ -1,15 +1,18 @@
-const Navbar = ({handleInput}) => {
+const Navbar = ({setGameState}) => {
+
+    const handleClick = () => {
+        let widthInput = document.getElementById('width').value
+        let minesInput = document.getElementById('mines').value
+        if (widthInput!='' && minesInput!='') {
+          setGameState({width: widthInput, mines: minesInput})
+        }
+    }
+
     return (
         <nav>
-            <label htmlFor="">Bredd:</label>
-            <input id="width" type="number" onInput={() => {
-                if ((document.getElementById('width').value != '') && (document.getElementById('mines') != '')) {
-                    handleInput({width: document.getElementById('width').value, mines: document.getElementById('mines').value})
-                }
-            }} />
-            <label htmlFor="">Minor:</label>
-            <input id="mines" type="number" onInput={() => {
-            }} />
+            <input id='width' type="number" />
+            <input id='mines' type="number" />
+            <button type='button' onClick={handleClick}>Let's go</button>
         </nav>
     )
 }
